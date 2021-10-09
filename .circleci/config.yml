@@ -18,12 +18,12 @@ jobs:
                 name: "Say hello"
                 command: "echo Hello, World!"
 
-    print-something:
+    print-name:
         docker:
             - image: circleci/node:13.8.0
         steps:
             - run:
-                command: "echo something"
+                command: "echo $NAME"
 
 
 # Invoke jobs via workflows
@@ -32,4 +32,4 @@ workflows:
   say-hello-workflow:
     jobs:
       - say-hello
-      - print-something
+      - print-name

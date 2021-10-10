@@ -27,8 +27,8 @@ jobs:
             - image: cimg/base:stable
         steps:
             - checkout
-            - name: "Print output"
             - run:
+                name: "Print output"
                 command: cat output.txt
             - attach_workspace:
                 at: /tmp/workspace

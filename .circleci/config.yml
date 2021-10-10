@@ -9,7 +9,7 @@ jobs:
         # Specify the execution environment. You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
         # See: https://circleci.com/docs/2.0/configuration-reference/#docker-machine-macos-windows-executor
         docker:
-            - image: cimg/base:stable
+            - image: circleci/node:13.8.0
         # Add steps to the job
         # See: https://circleci.com/docs/2.0/configuration-reference/#steps
         steps:
@@ -18,20 +18,20 @@ jobs:
                 name: "Save output"
                 command: "echo Hello, World! > output.txt"
             - persist_to_workspace:
-                root: /tmp/workspace
+                root: /tmp/dir
                 paths:
                     - output.txt
 
     print_output_file:
         docker:
-            - image: cimg/base:stable
+            - image: circleci/node:13.8.0
         steps:
             - checkout
             - run:
                 name: "Print output"
                 command: cat output.txt
             - attach_workspace:
-                at: /tmp/workspace
+                at: /tmp/dir
 
 
 # Invoke jobs via workflows

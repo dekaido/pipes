@@ -24,15 +24,15 @@ jobs:
             - run: cat ~/output.txt
             - print_pipeline_id
 
-    fail_job:
-        docker:
-            - image: circleci/node:13.8.0
-        steps:
-            - run: return 0
-            - run:
-                name: On Error
-                command: echo "Hello Error!"
-                when: on_fail
+    # fail_job:
+    #     docker:
+    #         - image: circleci/node:13.8.0
+    #     steps:
+    #         - run: return 1
+    #         - run:
+    #             name: On Error
+    #             command: echo "Hello Error!"
+    #             when: on_fail
 
 
 workflows:
